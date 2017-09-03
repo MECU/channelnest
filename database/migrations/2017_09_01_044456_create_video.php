@@ -13,13 +13,14 @@ class CreateVideo extends Migration
      */
     public function up()
     {
-        Schema::create('video', function (Blueprint $table) {
+        Schema::create('videos', function (Blueprint $table) {
             $table->increments('id')->primary();
+            $table->string('video_id');
             $table->string('title');
             $table->integer('type_id');
             $table->timestamps();
 
-            $table->foreign('type_id')->references('id')->on('type');
+            $table->foreign('type_id')->references('id')->on('types');
         });
     }
 
@@ -30,9 +31,9 @@ class CreateVideo extends Migration
      */
     public function down()
     {
-        $table = new Blueprint('video');
+        $table = new Blueprint('videos');
         $table->dropForeign(['type_id']);
 
-        Schema::dropIfExists('video');
+        Schema::dropIfExists('videos');
     }
 }
