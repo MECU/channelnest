@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Video;
+
 class VideoController extends Controller
 {
     public function videoSubmit()
@@ -10,9 +12,9 @@ class VideoController extends Controller
         return view('videoSubmit');
     }
 
-    public function video()
+    public function video(Video $video)
     {
 
-        return view('video');
+        return view('video', ['video' => $video]);
     }
 }
