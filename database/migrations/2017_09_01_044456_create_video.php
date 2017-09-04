@@ -18,9 +18,11 @@ class CreateVideo extends Migration
             $table->string('video_id');
             $table->string('title');
             $table->integer('type_id');
+            $table->integer('submit_user');
             $table->timestamps();
 
             $table->foreign('type_id')->references('id')->on('types');
+            $table->foreign('submit_user')->references('id')->on('users');
         });
     }
 
@@ -32,7 +34,7 @@ class CreateVideo extends Migration
     public function down()
     {
         $table = new Blueprint('videos');
-        $table->dropForeign(['type_id']);
+        $table->dropForeign(['type_id', 'submit_user']);
 
         Schema::dropIfExists('videos');
     }

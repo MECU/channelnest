@@ -10,4 +10,9 @@ class Video extends Model
     {
         return $this->hasOne(Type::class);
     }
+
+    public function submitter()
+    {
+        return $this->hasOne(User::class);
+    }
 }

@@ -26,7 +26,7 @@
                     </div>
                     <div class="panel-footer">
                         <p>
-                            <small><em>{{ $video->created_at->format('c') }} Central Time (USA)</em></small>
+                            <small><em>{{ $video->created_at->format('c') }} UTC</em></small>
                         </p>
                     </div>
                 </div>

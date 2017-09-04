@@ -8,7 +8,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $videos = Video::orderBy('created_at')->take(3)->get();
+        $videos = Video::orderBy('created_at', 'DESC')->take(3)->get();
 
         return view('index', ['videos' => $videos]);
     }
