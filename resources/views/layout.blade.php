@@ -40,7 +40,7 @@
                 <li><a href="{{ route('videoSubmit') }}">Submit</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                @if (Auth::guest())
+                @if (!Auth::guest())
                     {{--                <li><a href="{{ route('account_profile', ['user' => $user]) }}">{{ $user->username }}</a></li>--}}
                     <li><a href="{{ route('logout') }}"
                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log
