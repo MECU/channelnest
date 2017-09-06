@@ -13,6 +13,6 @@ class Video extends Model
 
     public function submitter()
     {
-        return $this->hasOne(User::class);
+        return $this->hasOne(User::class, 'id', 'submit_user');
     }
 }

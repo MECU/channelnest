@@ -40,17 +40,18 @@
                 <li><a href="{{ route('videoSubmit') }}">Submit</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                @if (!Auth::guest())
+                @if (Auth::guest())
+                    <li><a href="{{ route('register') }}">Register</a></li>
+                    <li><a href="{{ route('login') }}">Log in</a></li>
+                @else
                     {{--                <li><a href="{{ route('account_profile', ['user' => $user]) }}">{{ $user->username }}</a></li>--}}
+                    <li><a href="{{ route('profile', ['id' => \Auth::user()->id, 'username' => \Auth::user()->slug()]) }}">{{ \Auth::user()->name }}</a></li>
                     <li><a href="{{ route('logout') }}"
                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log
                             out</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
                               style="display: none;">{{ csrf_token() }}
                         </form>
-                @else
-                    <li><a href="{{ route('register') }}">Register</a></li>
-                    <li><a href="{{ route('login') }}">Log in</a></li>
                 @endif
             </ul>
         </div>
@@ -69,7 +70,7 @@
     @yield('content')
     <hr>
     <footer>
-        <p>&copy;{{ date('Y') }} ChannelNest.com, All rights reserved.</p>
+        <p>&copy;&nbsp;{{ date('Y') }} ChannelNest.com, All rights reserved.</p>
         <p>This website is not related, authorized, approved or associated with Nest.com or Nest products.</p>
     </footer>
 </div>

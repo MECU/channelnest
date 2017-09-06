@@ -9,5 +9,7 @@ Route::get('/video/{video}', 'VideoController@video')->name('video');
 
 Route::get('/video-check', 'VideoController@videoCheck')->name('videoCheck');
 
+Route::get('/user/{user}/{username}', 'UserController@profile')->name('profile');
+
 
 

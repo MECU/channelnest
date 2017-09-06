@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -26,4 +27,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function videos(): HasMany
+    {
+        return $this->hasMany(\App\Video::class, 'submit_user');
+    }
+
+    public function slug(): string
+    {
+        return strtolower(str_replace(' ', '-', $this->name));
+    }
 }

@@ -4,7 +4,9 @@
     <div class="jumbotron">
         <h1>Submit a Video</h1>
         <p>Currently we only accept Nest.com videos.</p>
-        <p>If you want the video attached to you as the submitter, please <a href="{{ route('login') }}">log in</a> first.</p>
+        @if(\Auth::guest())
+            <p>If you want the video attached to you as the submitter, please <a href="{{ route('login') }}">log in</a> first.</p>
+        @endif
     </div>
 
     @isset($error_message)

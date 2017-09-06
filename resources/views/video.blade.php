@@ -5,6 +5,9 @@
 
     <div class="jumbotron">
         <h1>{{ $video->title }}</h1>
+        @if($video->submitter !== null)
+            <p>Submited by <a href="{{ route('profile', ['user' => $video->submitter->id, 'username' => $video->submitter->slug()]) }}">{{ $video->submitter->name }}</a></p>
+        @endif
     </div>
     <div class="videocontent" style="background-color: #1b6d85">
         <video class="video-js vjs-default-skin vjs-16-9 vjs-big-play-centered" preload="auto" controls
